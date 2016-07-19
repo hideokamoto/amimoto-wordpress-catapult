@@ -13,6 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+img {
+	max-width: 100%;
+	height: auto;
+}
 
 .demo-ribbon {
   width: 100%;
