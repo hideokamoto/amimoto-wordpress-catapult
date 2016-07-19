@@ -152,8 +152,7 @@
 			domain: document.getElementById('domain').value,
 			region: "us-east-1"
 		};
-		createRoute53HostedZone( config );
-		//Create Stack
+		createEc2Keypair( config, snackbarContainer );
 	  });
 
 	  /**
@@ -191,16 +190,13 @@
   			secretAccessKey: config.secretAccessKey,
   			region: config.region
   		  });
-		  console.log(config.domain.split('.').join('_'));
 		  var params = {
 		    KeyName: config.domain.split('.').join('_')
 		  };
 		  ec2.createKeyPair(params, function(err, data) {
-			console.log(err);
 		    if (err) {
 				showError( err, snackbarContainer );
 			} else {
-				console.log(data);
 				downloadKeypair( config, snackbarContainer, data );
 			}
 		  });
